@@ -1,0 +1,16 @@
+cache:
+  untracked: true
+  paths:
+  - binaries/
+
+stages:
+    - deploy
+
+build_staging:
+    stage: deploy
+    script:
+        - npm install
+        - npm run build
+        - rsync -ae ssh ./build brllnt@brllnt.bcodev.net:/var/www/react-boilerplate
+    only:
+        - staging
