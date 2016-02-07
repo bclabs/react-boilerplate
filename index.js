@@ -1,5 +1,3 @@
-import React from 'react'
-import { render } from 'react-dom'
 import configureStore from './store/configureStore'
 import FastClick from 'fastclick'
 import { browserHistory } from 'react-router'
@@ -23,7 +21,7 @@ const routes = {
     childRoutes: childRoutes
 }
 
-render(
+ReactDOM.render(
     <Root store={reduxStore} routes={routes} history={browserHistory} />,
     document.getElementById('app')
 )

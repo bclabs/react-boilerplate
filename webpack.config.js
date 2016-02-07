@@ -2,6 +2,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 
 const ROOT_PATH = path.resolve(__dirname);
 const APP_PATH = path.resolve(ROOT_PATH, 'app');
@@ -35,8 +36,8 @@ let config = {
         loaders: [
             {
                 test: /\.scss$/,
-                loader: 'style!css!sass',
-                exclude: /(node_modules|bower_components)/
+                exclude: /(node_modules|bower_components)/,
+                loader: 'style!css!postcss!sass'
             }, {
                 test: /\.json$/,
                 exclude: /(node_modules|bower_components)/,
@@ -60,10 +61,17 @@ let config = {
             }
         ]
     },
+    postcss: [
+        autoprefixer({ browsers: ['last 2 versions'] })
+    ],
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
+        new webpack.ProvidePlugin({
+			React: "react",
+			ReactDOM: "react-dom"
+		}),
         new webpack.DefinePlugin({
             "process.env": {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')

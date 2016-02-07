@@ -1,4 +1,3 @@
-import React from 'react'
 import { reduxForm } from 'redux-form'
 
 class ContactForm extends React.Component {
