@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux'
-import { routeReducer } from 'redux-simple-router'
+import { routerReducer } from 'react-router-redux'
 import { reducer as formReducer } from 'redux-form'
 import ui from './ui'
+import repos from './sampleAsync'
 
 const rootReducer = combineReducers({
     ui,
+    repos,
     form: formReducer,
-    routing: routeReducer
+    routing: routerReducer
 })
 
 export default rootReducer

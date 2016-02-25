@@ -1,15 +1,26 @@
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { syncHistoryWithStore } from 'react-router-redux'
+import { Router } from 'react-router'
 import configureStore from './store/configureStore'
 import FastClick from 'fastclick'
 import { browserHistory } from 'react-router'
-import { Root, App } from './components'
-
-import { Home } from './pages'
+import { App } from './components'
+import { Home, Repos } from './pages'
 
 FastClick.attach(document.body)
 
-const reduxStore = configureStore()
+const store = configureStore()
+const history = syncHistoryWithStore(browserHistory, store)
 
 const childRoutes = [{
+    path: 'repos/:username',
+    component: Repos
+}, {
+    path: 'about',
+    component: () => <h1>About</h1>
+}, {
     path: '*',
     component: () => <h1>Not found</h1>
 }]
@@ -21,7 +32,9 @@ const routes = {
     childRoutes: childRoutes
 }
 
-ReactDOM.render(
-    <Root store={reduxStore} routes={routes} history={browserHistory} />,
+render(
+    <Provider store={store}>
+        <Router routes={routes} history={history} />
+    </Provider>,
     document.getElementById('app')
 )
