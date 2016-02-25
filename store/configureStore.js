@@ -6,7 +6,7 @@ import api from './api'
 
 let middlewares = [ thunkMiddleware, api ]
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV !== 'production') {
     middlewares = [ ...middlewares, createLogger({collapsed: true}) ]
 }
 
