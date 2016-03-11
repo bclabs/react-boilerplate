@@ -1,11 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
+import { Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
-import { Router } from 'react-router'
 import configureStore from './store/configureStore'
 import FastClick from 'fastclick'
-import { browserHistory } from 'react-router'
 import { App } from './components'
 import { Home, Repos } from './pages'
 
