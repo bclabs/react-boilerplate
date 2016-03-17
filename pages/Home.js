@@ -1,26 +1,30 @@
-import React from 'react'
 import { browserHistory } from 'react-router'
+import Form, { Field } from '../components/Form'
 
 class Home extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: ''
+            repoForm: {}
         }
     }
-    onSubmit = e => {
-        e.preventDefault()
-        browserHistory.push('/repos/' + this.state.username)
+    
+    onSubmit = formValues => {
+        browserHistory.push('/repos/' + formValues.username)
     };
+    
+    onChange = v => {
+        this.setState({repoForm: v});
+    };
+    
     render() {
         return (
             <div className="Home">
                 <h1>Home</h1>
-                <form onSubmit={this.onSubmit}>
-                    <input type="text" onChange={e => this.setState({ username: e.target.value})} />
-                    <button type="submit">{this.state.username}'s Repositories</button>
-                </form>
-                <br />
+                <Form onSubmit={this.onSubmit} onChange={this.onChange}>
+                    <Field placeholder="username" name="username" />
+                    <button type="submit">{this.state.repoForm.username}'s Repositories</button>
+                </Form>
             </div>
         )
     }

@@ -28,7 +28,7 @@ const routes = {
     path: '/',
     component: App,
     indexRoute: { component: Home },
-    childRoutes: childRoutes
+    childRoutes
 }
 
 render(
