@@ -1,5 +1,5 @@
 import { browserHistory } from 'react-router'
-import Form, { Field } from '../components/Form'
+import Form, { Field } from '@brllnt/react-form'
 
 class Home extends React.Component {
     constructor(props) {
