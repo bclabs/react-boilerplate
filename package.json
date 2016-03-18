@@ -1,17 +1,16 @@
 {
   "name": "brllnt-react-boilerplate",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "scripts": {
     "build": "npm run clean && npm run webpack && cp index.html build/",
     "clean": "rm -rf build",
     "webpack": "webpack -p",
     "start": "node server.js"
   },
-  "private": "true",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://git.brllnt.co/bclabs/brllnt-react-boilerplate.git"
+    "url": "https://github.com/bclabs/react-boilerplate.git"
   },
   "dependencies": {
     "@brllnt/react-form": "0.0.1",

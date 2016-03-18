@@ -20,7 +20,7 @@ class Home extends React.Component {
     render() {
         return (
             <div className="Home">
-                <h1>Home</h1>
+                <p>Type in a github username to list their repositories</p>
                 <Form onSubmit={this.onSubmit} onChange={this.onChange}>
                     <Field placeholder="username" name="username" />
                     <button type="submit">{this.state.repoForm.username}'s Repositories</button>
