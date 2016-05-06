@@ -1,25 +1,19 @@
-const TOGGLE_DIALOG = 'TOGGLE_DIALOG'
+const SET_PROPERTY = 'SET_PROPERTY'
 
-const initialState = {
-    dialogs: {}
-}
+const initialState = {}
 
-export function toggleDialog(id) {
-    return {
-        type: TOGGLE_DIALOG,
-        id
-    }
-}
+const setProperty = (property, value) => ({
+    type: SET_PROPERTY,
+    property,
+    value
+})
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case TOGGLE_DIALOG:
+        case SET_PROPERTY:
             return {
                 ...state,
-                dialogs: {
-                    ...state.dialogs,
-                    [action.id]: !state.dialogs[action.id]
-                }
+                [action.property]: action.value
             }
         default:
             return state
